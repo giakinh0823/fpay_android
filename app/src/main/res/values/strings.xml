@@ -5,6 +5,12 @@
     <string name="menu_qr">QR</string>
     <string name="menu_coin">Coin</string>
     <string name="menu_account">Account</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="avatar">avatar</string>
+    <string name="img_avatar_desc">Hà Gia Kính</string>
+    <string name="account_item_title">Account setting title</string>
+    <string name="account_item_desc">desc</string>
+    <string name="icon_item_list">icon</string>
 </resources>
