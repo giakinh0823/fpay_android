@@ -44,7 +44,6 @@
                 android:layout_height="wrap_content"
                 android:text="0976 825155"
                 android:textSize="16dp"
-
                 />
         </LinearLayout>
 
@@ -69,7 +68,9 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:background="@color/bg" />
+        android:background="@color/bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -106,7 +107,9 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:background="@color/bg" />
+        android:background="@color/bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
 
     <LinearLayout
@@ -136,7 +139,9 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:background="@color/bg" />
+        android:background="@color/bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -165,7 +170,9 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:background="@color/bg" />
+        android:background="@color/bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -194,7 +201,9 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:background="@color/bg" />
+        android:background="@color/bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
