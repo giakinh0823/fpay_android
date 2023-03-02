@@ -13,4 +13,6 @@
     <string name="account_item_title">Account setting title</string>
     <string name="account_item_desc">desc</string>
     <string name="icon_item_list">icon</string>
+    <string name="account_name">Hà Gia Kính</string>
+    <string name="account_phone">0972141556</string>
 </resources>
