@@ -50,4 +50,4 @@ public abstract class DatabaseHelper<T> extends SQLiteOpenHelper {
     abstract T getById(String id);
     abstract void insert(T object);
     abstract void update(T t);
-    abstract void delete(String id);
+    abstract void delete(String id);}
