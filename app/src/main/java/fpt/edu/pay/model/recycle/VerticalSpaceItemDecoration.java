@@ -15,15 +15,30 @@ public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
     private final int dividerColor;
     private final int height;
 
+    private int verticalSpacing;
+    private int horizontalSpacing;
+
     public VerticalSpaceItemDecoration(int height, int dividerColor) {
         this.dividerColor = dividerColor;
         this.height = height;
     }
 
+    public VerticalSpaceItemDecoration(int height, int dividerColor, int verticalSpacing, int horizontalSpacing) {
+        this.dividerColor = dividerColor;
+        this.height = height;
+        this.verticalSpacing = verticalSpacing;
+        this.horizontalSpacing = horizontalSpacing;
+    }
+
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-        outRect.top = view.getResources().getDimensionPixelSize(R.dimen.vertical_padding);
-        outRect.bottom = view.getResources().getDimensionPixelSize(R.dimen.vertical_padding);
+        super.getItemOffsets(outRect, view, parent, state);
+        if(verticalSpacing > 0 && horizontalSpacing > 0){
+            outRect.top = verticalSpacing;
+            outRect.bottom = verticalSpacing;
+            outRect.left = horizontalSpacing;
+            outRect.right = horizontalSpacing;
+        }
     }
 
     @Override
