@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import fpt.edu.pay.R;
-import fpt.edu.pay.model.GroupMenuAccount;
+import fpt.edu.pay.model.account.GroupMenuAccount;
 import lombok.Getter;
 import lombok.Setter;
 

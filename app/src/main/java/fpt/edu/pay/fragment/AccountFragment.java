@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,8 +14,9 @@ import java.util.List;
 
 import fpt.edu.pay.R;
 import fpt.edu.pay.adepter.GroupMenuAccountAdapter;
-import fpt.edu.pay.model.GroupMenuAccount;
-import fpt.edu.pay.model.MenuAccount;
+import fpt.edu.pay.model.account.GroupMenuAccount;
+import fpt.edu.pay.model.account.MenuAccount;
+import fpt.edu.pay.model.recycle.VerticalSpaceItemDecoration;
 
 
 public class AccountFragment extends Fragment {
@@ -69,12 +70,14 @@ public class AccountFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         mapping(view);
+
+        int dividerColor = ContextCompat.getColor(view.getContext(), R.color.divider_color);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(groupMenuAccountAdapter);
-        RecyclerView.ItemDecoration itemDecoration =
-                new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(itemDecoration);
+        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(20, dividerColor));
+
         return view;
     }
 

@@ -1,11 +1,9 @@
-package fpt.edu.pay.model;
+package fpt.edu.pay.model.account;
 
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter

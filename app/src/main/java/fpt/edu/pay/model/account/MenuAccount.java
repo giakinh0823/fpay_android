@@ -1,4 +1,4 @@
-package fpt.edu.pay.model;
+package fpt.edu.pay.model.account;
 
 import lombok.Getter;
 import lombok.Setter;
