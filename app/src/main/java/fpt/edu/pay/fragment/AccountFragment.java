@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import fpt.edu.pay.R;
 import fpt.edu.pay.adepter.GroupMenuAccountAdapter;
+import fpt.edu.pay.constant.AccountConstant;
 import fpt.edu.pay.model.account.GroupMenuAccount;
 import fpt.edu.pay.model.account.MenuAccount;
 import fpt.edu.pay.model.recycle.VerticalSpaceItemDecoration;
@@ -83,23 +86,11 @@ public class AccountFragment extends Fragment {
 
     private void mapping(View view) {
         recyclerView = view.findViewById(R.id.recycle_view_menu_account);
-        List<GroupMenuAccount> groupMenuAccounts = List.of(new GroupMenuAccount(List.of(
-                        new MenuAccount("Mã QR nhận tiền", "", R.drawable.ic_qr_scan)
-                )), new GroupMenuAccount(List.of(
-                        new MenuAccount("Số dư", "100.000đ", R.drawable.ic_balance),
-                        new MenuAccount("Xu tích lũy", "25 xu", R.drawable.ic_hold_coin),
-                        new MenuAccount("1 ưu đãi", "1 ưu đãi", R.drawable.ic_gift)
-                )), new GroupMenuAccount(List.of(
-                        new MenuAccount("Ngân hàng", "1 liên kết", R.drawable.ic_card),
-                        new MenuAccount("Quản lý hóa đơn", "Thêm hóa đơn", R.drawable.ic_bill),
-                        new MenuAccount("Liên kết ngân hàng", "", R.drawable.ic_linked_bank)
-                )), new GroupMenuAccount(List.of(
-                        new MenuAccount("Thiết lập tài khoản", "", R.drawable.ic_setting_account),
-                        new MenuAccount("Tài khoản thông báo", "", R.drawable.ic_setting_noti),
-                        new MenuAccount("Trung tâm hỗ trợ", "", R.drawable.ic_support),
-                        new MenuAccount("Thông tin ứng dụng", "", R.drawable.ic_info_app)
-                ))
-        );
-        groupMenuAccountAdapter = new GroupMenuAccountAdapter(groupMenuAccounts);
+        groupMenuAccountAdapter = new GroupMenuAccountAdapter(Stream.concat(Stream.of(
+                        new GroupMenuAccount(List.of(
+                                new MenuAccount("Hà Gia Kính", "0972141556", R.raw.avatar)
+                        ))),
+                        AccountConstant.GROUP_MENU_ACCOUNTS.stream())
+                .collect(Collectors.toList()));
     }
 }

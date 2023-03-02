@@ -3,7 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/common_account_header_avatar"
@@ -19,8 +23,8 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/common_account_header_avatar"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/common_account_header_name"
             android:layout_width="wrap_content"
@@ -35,10 +39,19 @@
             android:layout_height="wrap_content"
             android:text="@string/account_phone"
             android:textColor="@color/black"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:textStyle="normal"
-            android:layout_marginTop="5dp"
             tools:ignore="SmallSp" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/common_recycle_view_icon_right"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/icon_item_list"
+        android:src="@drawable/icon_right_black"
+        android:textStyle="normal" />
 </RelativeLayout>
