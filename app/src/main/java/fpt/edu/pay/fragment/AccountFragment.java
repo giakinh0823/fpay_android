@@ -1,20 +1,24 @@
 package fpt.edu.pay.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import fpt.edu.pay.R;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AccountFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.List;
+
+import fpt.edu.pay.R;
+import fpt.edu.pay.adepter.GroupMenuAccountAdapter;
+import fpt.edu.pay.model.account.GroupMenuAccount;
+import fpt.edu.pay.model.account.MenuAccount;
+import fpt.edu.pay.model.recycle.VerticalSpaceItemDecoration;
+
+
 public class AccountFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -25,6 +29,8 @@ public class AccountFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RecyclerView recyclerView;
+    GroupMenuAccountAdapter groupMenuAccountAdapter;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -51,6 +57,7 @@ public class AccountFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -61,6 +68,38 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
+        mapping(view);
+
+        int dividerColor = ContextCompat.getColor(view.getContext(), R.color.divider_color);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(groupMenuAccountAdapter);
+        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(20, dividerColor));
+
+        return view;
+    }
+
+    private void mapping(View view) {
+        recyclerView = view.findViewById(R.id.recycle_view_menu_account);
+        List<GroupMenuAccount> groupMenuAccounts = List.of(new GroupMenuAccount(List.of(
+                        new MenuAccount("Mã QR nhận tiền", "", R.drawable.ic_qr_scan)
+                )), new GroupMenuAccount(List.of(
+                        new MenuAccount("Số dư", "100.000đ", R.drawable.ic_balance),
+                        new MenuAccount("Xu tích lũy", "25 xu", R.drawable.ic_hold_coin),
+                        new MenuAccount("1 ưu đãi", "1 ưu đãi", R.drawable.ic_gift)
+                )), new GroupMenuAccount(List.of(
+                        new MenuAccount("Ngân hàng", "1 liên kết", R.drawable.ic_card),
+                        new MenuAccount("Quản lý hóa đơn", "Thêm hóa đơn", R.drawable.ic_bill),
+                        new MenuAccount("Liên kết ngân hàng", "", R.drawable.ic_linked_bank)
+                )), new GroupMenuAccount(List.of(
+                        new MenuAccount("Thiết lập tài khoản", "", R.drawable.ic_setting_account),
+                        new MenuAccount("Tài khoản thông báo", "", R.drawable.ic_setting_noti),
+                        new MenuAccount("Trung tâm hỗ trợ", "", R.drawable.ic_support),
+                        new MenuAccount("Thông tin ứng dụng", "", R.drawable.ic_info_app)
+                ))
+        );
+        groupMenuAccountAdapter = new GroupMenuAccountAdapter(groupMenuAccounts);
     }
 }

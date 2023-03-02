@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp">
+    <ImageView
+        android:id="@+id/common_item_recycle_view_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_qr_scan"
+        tools:ignore="MissingConstraints"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/img_avatar_desc" />
+
+    <TextView
+        android:id="@+id/common_item_recycle_view_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/common_item_recycle_view_image"
+        android:layout_centerVertical="true"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        android:text="@string/account_item_title" />
+
+    <TextView
+        android:id="@+id/common_item_recycle_view_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="10dp"
+        android:layout_toLeftOf="@+id/common_recycle_view_icon_right"
+        android:layout_toRightOf="@+id/common_item_recycle_view_title"
+        android:gravity="right"
+        android:text="@string/account_item_desc"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        tools:ignore="RtlHardcoded" />
+
+    <ImageView
+        android:id="@+id/common_recycle_view_icon_right"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/icon_item_list"
+        android:src="@drawable/icon_right_black"
+        android:textStyle="normal" />
+</RelativeLayout>

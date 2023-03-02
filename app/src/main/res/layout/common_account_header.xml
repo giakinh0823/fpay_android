@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/common_account_header_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@raw/avatar"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/primary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/common_account_header_avatar"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/common_account_header_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/account_name"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/common_account_header_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/account_phone"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:textStyle="normal"
+            android:layout_marginTop="5dp"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+</RelativeLayout>
