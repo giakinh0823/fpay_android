@@ -43,8 +43,8 @@ public class SettingAdapter  extends RecyclerView.Adapter<SettingAdapter.Setting
         TextView tv_title;
         public SettingHolder(@NonNull View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.imv_img);
-            tv_title = itemView.findViewById(R.id.tv_setting);
+            img = itemView.findViewById(R.id.img_icon);
+            tv_title = itemView.findViewById(R.id.tv_title);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
