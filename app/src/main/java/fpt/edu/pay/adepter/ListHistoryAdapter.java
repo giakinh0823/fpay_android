@@ -1,0 +1,77 @@
+package fpt.edu.pay.adepter;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fpt.edu.pay.R;
+import fpt.edu.pay.model.histoty.History;
+
+public class ListHistoryAdapter extends RecyclerView.Adapter<ListHistoryAdapter.ListViewHolder>{
+
+
+    private List<History> listHistory;
+
+    public ListHistoryAdapter(List<History> data) {
+        this.listHistory = data;
+    }
+
+
+    public void setData(List<History> list){
+        this.listHistory = list;
+        notifyDataSetChanged();
+
+    }
+
+    @NonNull
+    @Override
+    public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.history_categories_all_item, parent, false);
+        return  new ListViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
+        History history = listHistory.get(position);
+        if (history==null){
+            return;
+        }
+
+        holder.tv_date.setText(history.getTransactionTime());
+        holder.description.setText(history.getDescription());
+        holder.money.setText(Integer.toString(history.getAmount()));
+        holder.status.setText(Integer.toString(history.getStatus()));
+    }
+
+    @Override
+    public int getItemCount() {
+        if(listHistory!=null){
+            return listHistory.size();
+        }
+        return 0;
+    }
+
+
+    public class ListViewHolder extends RecyclerView.ViewHolder {
+        private TextView tv_date;
+        private TextView description;
+        private TextView money;
+        private TextView status;
+
+        public ListViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tv_date = itemView.findViewById(R.id.tv_date);
+            description = itemView.findViewById(R.id.description);
+            money = itemView.findViewById(R.id.money);
+            status = itemView.findViewById(R.id.status);
+        }
+    }
+}
