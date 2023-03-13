@@ -13,8 +13,9 @@ import fpt.edu.pay.model.Book;
 
 public class BookDatabaseHelper extends DatabaseHelper<Book> {
     private static final String TABLE_NAME = "books";
+
     private static final String ID_COLUMN = "id";
-    private static final String[] COLUMNS = { "title", "year_published", "price" };
+    private static final String[] COLUMNS = { "user_id", "year_published", "price" };
     private static final String[] COLUMN_TYPES = { "TEXT", "INTEGER", "REAL" };
 
 

@@ -14,18 +14,18 @@
         android:layout_height="64dp">
 
         <TextView
-            android:id="@+id/tv_setting"
+            android:id="@+id/tv_title"
             android:layout_width="145dp"
             android:layout_height="27dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="168dp"
             android:text="TextView"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/imv_img"
+            app:layout_constraintEnd_toStartOf="@+id/img_icon"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imv_img"
+            android:id="@+id/img_icon"
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:layout_marginStart="332dp"
