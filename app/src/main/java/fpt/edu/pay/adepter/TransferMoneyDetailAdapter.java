@@ -36,6 +36,11 @@ public class TransferMoneyDetailAdapter extends RecyclerView.Adapter<TransferMon
         final Money money = moneyList.get(position);
         holder.tv_name.setText(moneyList.get(position).getFriendName());
         holder.tv_number.setText(moneyList.get(position).getNumberPhone());
+        if(moneyList.get(position).isZaloPay() == 1){
+            holder.tv_Invite.setVisibility(View.INVISIBLE);
+        }else{
+            holder.tv_Invite.setVisibility(View.VISIBLE);
+        }
 
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +67,8 @@ public class TransferMoneyDetailAdapter extends RecyclerView.Adapter<TransferMon
         TextView tv_name;
         TextView tv_number;
 
+        TextView tv_Invite;
+
         private OnItemClickListener listener;
 
         private LinearLayout layoutItem;
@@ -70,6 +77,7 @@ public class TransferMoneyDetailAdapter extends RecyclerView.Adapter<TransferMon
             super(itemView);
             tv_name = itemView.findViewById(R.id.tv_name);
             tv_number = itemView.findViewById(R.id.tv_number);
+            tv_Invite = itemView.findViewById(R.id.tvInvite);
 
             this.listener = listener;
             layoutItem = itemView.findViewById(R.id.layoutItem);

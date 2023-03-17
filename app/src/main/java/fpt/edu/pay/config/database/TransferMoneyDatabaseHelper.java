@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import fpt.edu.pay.model.Book;
 import fpt.edu.pay.model.Money;
 
 public class TransferMoneyDatabaseHelper extends DatabaseHelper<Money> {
@@ -53,6 +54,28 @@ public class TransferMoneyDatabaseHelper extends DatabaseHelper<Money> {
         return null;
     }
 
+    public Money getMoneyByNameOrNumberPhone(String text){
+        Money money = null;
+        String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMNS[1] + " = \"" + text + "\"" + " OR " +
+                COLUMNS[3] + " = \"" + text + "\"";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            money = new Money();
+            money.setId(cursor.getInt(0));
+            money.setTotalMoney(cursor.getFloat(1));
+            money.setFriendName(cursor.getString(2));
+            money.setZaloPay(cursor.getInt(3));
+            money.setNumberPhone(cursor.getString(4));
+
+        }
+        cursor.close();
+        db.close();
+
+        return money;
+    }
 
     @Override
     public void insert(Money money) {
@@ -69,6 +92,16 @@ public class TransferMoneyDatabaseHelper extends DatabaseHelper<Money> {
     @Override
     void update(Money money) {
 
+    }
+
+    public void decreaseMoney(int id, float money) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMNS[0],money);
+        db.update(TABLE_NAME, contentValues, ID_COLUMN + " = ?", new String[] { String.valueOf(id) });
+
+        db.close();
     }
 
     @Override
