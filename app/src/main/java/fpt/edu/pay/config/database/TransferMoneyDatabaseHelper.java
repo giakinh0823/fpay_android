@@ -1,5 +1,6 @@
 package fpt.edu.pay.config.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import fpt.edu.pay.model.Book;
 import fpt.edu.pay.model.Money;
 
 public class TransferMoneyDatabaseHelper extends DatabaseHelper<Money> {
@@ -36,11 +38,11 @@ public class TransferMoneyDatabaseHelper extends DatabaseHelper<Money> {
         if (cursor.moveToFirst()) {
             do {
                 Money money = new Money();
-                money.setId(cursor.getInt(1));
-                money.setTotalMoney(cursor.getFloat(2));
-                money.setFriendName(cursor.getString(3));
-                money.setZaloPay(cursor.getInt(4));
-                money.setNumberPhone(cursor.getString(5));
+                money.setId(cursor.getInt(0));
+                money.setTotalMoney(cursor.getFloat(1));
+                money.setFriendName(cursor.getString(2));
+                money.setZaloPay(cursor.getInt(3));
+                money.setNumberPhone(cursor.getString(4));
                 list.add(money);
             } while (cursor.moveToNext());
         }
@@ -52,15 +54,54 @@ public class TransferMoneyDatabaseHelper extends DatabaseHelper<Money> {
         return null;
     }
 
+    public Money getMoneyByNameOrNumberPhone(String text){
+        Money money = null;
+        String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMNS[1] + " = \"" + text + "\"" + " OR " +
+                COLUMNS[3] + " = \"" + text + "\"";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            money = new Money();
+            money.setId(cursor.getInt(0));
+            money.setTotalMoney(cursor.getFloat(1));
+            money.setFriendName(cursor.getString(2));
+            money.setZaloPay(cursor.getInt(3));
+            money.setNumberPhone(cursor.getString(4));
+
+        }
+        cursor.close();
+        db.close();
+
+        return money;
+    }
 
     @Override
-    void insert(Money object) {
+    public void insert(Money money) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMNS[0],money.getTotalMoney());
+        contentValues.put(COLUMNS[1],money.getFriendName());
+        contentValues.put(COLUMNS[2],money.isZaloPay());
+        contentValues.put(COLUMNS[3],money.getNumberPhone());
 
+        db.insert(TABLE_NAME,null ,contentValues);
     }
 
     @Override
     void update(Money money) {
 
+    }
+
+    public void decreaseMoney(int id, float money) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMNS[0],money);
+        db.update(TABLE_NAME, contentValues, ID_COLUMN + " = ?", new String[] { String.valueOf(id) });
+
+        db.close();
     }
 
     @Override
