@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,6 +52,9 @@ public class TransferMoneyDetailActivity extends AppCompatActivity{
 
         RecyclerView rec = findViewById(R.id.recycle_moneyDetail);
         TransferMoneyDetailAdapter adapter = new TransferMoneyDetailAdapter(list);
+
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        rec.addItemDecoration(itemDecoration);
         rec.setLayoutManager(new LinearLayoutManager(this));
         rec.setAdapter(adapter);
 
@@ -95,7 +99,9 @@ public class TransferMoneyDetailActivity extends AppCompatActivity{
                                 edtAmount.setError("Số tiền trong tài khoản không đủ để thực hiện giao dịch !");
                             }else{
                                 transferMoneyDatabaseHelper.decreaseMoney(moneyRoot.getId(), moneyRoot.getTotalMoney() - amount);
+                                transferMoneyDatabaseHelper.decreaseMoney(moneyFind.getId(), moneyFind.getTotalMoney() + amount);
                                 Toast.makeText(TransferMoneyDetailActivity.this, "Giao dịch thành công.", Toast.LENGTH_SHORT).show();
+                                recreate();
                             }
                         }else{
                             edtSearch.setError("Tài khoản không tồn tại !");
