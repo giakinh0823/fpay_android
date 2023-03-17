@@ -64,30 +64,30 @@
             android:layout_marginTop="310dp"
             android:columnCount="4"
             android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="45dp"
+
             android:rowCount="2" >
             <Button
                 android:id="@+id/button1"
                 android:layout_column="0"
                 android:layout_row="0"
-                android:text="50.000đ"
+                android:text="50000"
                 android:paddingLeft="25dp"/>
             <Button
                 android:id="@+id/button2"
                 android:layout_column="1"
 
                 android:layout_row="0"
-                android:paddingLeft="30dp"
-                android:text="100.000đ" />
+                android:paddingLeft="25dp"
+                android:text="100000" />
             <Button
                 android:id="@+id/button3"
 
                 android:layout_column="2"
 
                 android:layout_row="0"
-                android:paddingLeft="30dp"
-                android:text="200.000đ" />
+                android:paddingLeft="25dp"
+                android:text="200000" />
 
             <!--            dsaas-->
             <Button
@@ -96,20 +96,18 @@
                 android:layout_marginRight="10dp"
 
                 android:layout_row="1"
-                android:text="500.000đ" />
+                android:text="500000" />
             <Button
                 android:id="@+id/button5"
                 android:layout_column="1"
                 android:layout_row="1"
                 android:layout_marginRight="10dp"
-                android:text="1.000.000đ" />
+                android:text="1000000" />
             <Button
                 android:id="@+id/button6"
-
                 android:layout_column="2"
-
                 android:layout_row="1"
-                android:text="2.000.000đ" />
+                android:text="2000000" />
 
         </GridLayout>
 
@@ -259,6 +257,7 @@
                 android:text="Số dư ví" />
 
             <TextView
+                android:id="@+id/totalMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"

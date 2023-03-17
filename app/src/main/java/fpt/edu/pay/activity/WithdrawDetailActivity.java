@@ -6,10 +6,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 import fpt.edu.pay.R;
+import fpt.edu.pay.config.database.TransferMoneyDatabaseHelper;
+import fpt.edu.pay.model.Money;
 
 public class WithdrawDetailActivity extends AppCompatActivity {
     Button btn1;
@@ -19,8 +24,12 @@ public class WithdrawDetailActivity extends AppCompatActivity {
     Button btn5;
     Button btn6;
     EditText edt1;
-
     ImageView imv2;
+    TextView totalmoney;
+    Button submit;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +42,18 @@ public class WithdrawDetailActivity extends AppCompatActivity {
         btn5 = findViewById(R.id.button5);
         btn6 = findViewById(R.id.button6);
         edt1 = findViewById(R.id.money_input);
-
         imv2 = findViewById(R.id.back2);
+        totalmoney = findViewById(R.id.totalMoney);
+        submit = findViewById(R.id.confirm_button2);
+        TransferMoneyDatabaseHelper transferMoneyDatabaseHelper = new TransferMoneyDatabaseHelper(WithdrawDetailActivity.this);
+        List<Money> listMoney = transferMoneyDatabaseHelper.getAll();
+        Money moneyRoot = listMoney.get(0);
+        totalmoney.setText(""+ moneyRoot.getTotalMoney());
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 edt1.setText(btn1.getText());
-
             }
         });
 
@@ -48,7 +61,6 @@ public class WithdrawDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 edt1.setText(btn2.getText());
-
             }
         });
 
@@ -89,6 +101,15 @@ public class WithdrawDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(WithdrawDetailActivity.this, RechargeWithdraw.class);
                 startActivity(intent);
+            }
+        });
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                float totalMoney =Float.parseFloat(edt1.getText().toString().trim()) - moneyRoot.getTotalMoney();
+                transferMoneyDatabaseHelper.decreaseMoney(moneyRoot.getId(),totalMoney);
+                recreate();
             }
         });
     }
