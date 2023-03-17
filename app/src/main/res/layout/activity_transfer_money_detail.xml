@@ -11,10 +11,10 @@
         layout="@layout/toolbar_activity_transfer_money" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="336dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="21dp"
+        android:id="@+id/edtSearch"
+        android:layout_width="292dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="24dp"
         android:background="@android:color/transparent"
         android:ems="10"
         android:hint="Nhập tên hoặc số điện thoại"
@@ -22,15 +22,15 @@
         android:textColor="#534B4B"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toEndOf="@+id/imageView10"
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_width="336dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="301dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:ems="10"
         android:hint="Nhập số tiền cần chuyển"
@@ -38,31 +38,41 @@
         android:textColor="#534B4B"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSearch" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_moneyDetail"
-        android:layout_width="407dp"
-        android:layout_height="472dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_listFriend" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="334dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="10dp"
+        android:id="@+id/tv_listFriend"
+        android:layout_width="333dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
         android:text="Danh sách bạn bè"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="37dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:srcCompat="@drawable/baseline_search_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

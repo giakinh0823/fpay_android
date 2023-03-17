@@ -1,5 +1,6 @@
 package fpt.edu.pay.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -14,6 +15,8 @@ import java.util.List;
 import fpt.edu.pay.R;
 import fpt.edu.pay.adepter.TransferBankAdapter;
 import fpt.edu.pay.adepter.TransferBankRecycleAdapter;
+import fpt.edu.pay.common.OnItemClickListener;
+import fpt.edu.pay.model.Money;
 import fpt.edu.pay.model.TransferMoney;
 
 public class TransferMoneyActivity extends AppCompatActivity {
@@ -55,6 +58,14 @@ public class TransferMoneyActivity extends AppCompatActivity {
         TransferBankRecycleAdapter adapter2 = new TransferBankRecycleAdapter(transferMoneyList);
         rec.setLayoutManager(new LinearLayoutManager(this));
         rec.setAdapter(adapter2);
+        adapter2.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(TransferMoneyActivity.this, TransferMoneyDetailActivity.class);
+                startActivity(intent);
+            }
+
+        });
     }
 
 

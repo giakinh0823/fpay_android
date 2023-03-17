@@ -1,6 +1,8 @@
 package fpt.edu.pay.model;
 
-public class Money {
+import java.io.Serializable;
+
+public class Money implements Serializable {
     private int id;
     private float totalMoney;
     private String friendName;
@@ -12,6 +14,13 @@ public class Money {
 
     public Money(int id, float totalMoney, String friendName, int isZaloPay, String numberPhone) {
         this.id = id;
+        this.totalMoney = totalMoney;
+        this.friendName = friendName;
+        this.isZaloPay = isZaloPay;
+        this.numberPhone = numberPhone;
+    }
+
+    public Money(float totalMoney, String friendName, int isZaloPay, String numberPhone) {
         this.totalMoney = totalMoney;
         this.friendName = friendName;
         this.isZaloPay = isZaloPay;

@@ -12,10 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import fpt.edu.pay.R;
+import fpt.edu.pay.common.OnItemClickListener;
 import fpt.edu.pay.model.TransferMoney;
 
 public class TransferBankRecycleAdapter   extends RecyclerView.Adapter<TransferBankRecycleAdapter.TransferBankRecycleHolder>{
     List<TransferMoney> transferMoneyList;
+    private OnItemClickListener mListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
     public TransferBankRecycleAdapter (List<TransferMoney> li) {
         this.transferMoneyList = li;
     }
@@ -57,7 +63,12 @@ public class TransferBankRecycleAdapter   extends RecyclerView.Adapter<TransferB
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int pos = getAdapterPosition();
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
                 }
             });
 

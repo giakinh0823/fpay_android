@@ -1,5 +1,6 @@
 package fpt.edu.pay.config.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -36,11 +37,11 @@ public class TransferMoneyDatabaseHelper extends DatabaseHelper<Money> {
         if (cursor.moveToFirst()) {
             do {
                 Money money = new Money();
-                money.setId(cursor.getInt(1));
-                money.setTotalMoney(cursor.getFloat(2));
-                money.setFriendName(cursor.getString(3));
-                money.setZaloPay(cursor.getInt(4));
-                money.setNumberPhone(cursor.getString(5));
+                money.setId(cursor.getInt(0));
+                money.setTotalMoney(cursor.getFloat(1));
+                money.setFriendName(cursor.getString(2));
+                money.setZaloPay(cursor.getInt(3));
+                money.setNumberPhone(cursor.getString(4));
                 list.add(money);
             } while (cursor.moveToNext());
         }
@@ -54,8 +55,15 @@ public class TransferMoneyDatabaseHelper extends DatabaseHelper<Money> {
 
 
     @Override
-    void insert(Money object) {
+    public void insert(Money money) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMNS[0],money.getTotalMoney());
+        contentValues.put(COLUMNS[1],money.getFriendName());
+        contentValues.put(COLUMNS[2],money.isZaloPay());
+        contentValues.put(COLUMNS[3],money.getNumberPhone());
 
+        db.insert(TABLE_NAME,null ,contentValues);
     }
 
     @Override
