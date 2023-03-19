@@ -116,12 +116,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
                     <ImageView
+                        android:id="@+id/exchange"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/exchange"
                         android:padding="3dp"
+                        android:src="@drawable/exchange"
                         app:tint="@color/primary" />
                     <TextView
                         android:layout_marginTop="5dp"
@@ -155,12 +157,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
                     <ImageView
+                        android:id="@+id/recharge_withdraw"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/wallet_icon"
                         android:padding="3dp"
+                        android:src="@drawable/wallet_icon"
                         app:tint="@color/primary" />
                     <TextView
                         android:layout_marginTop="5dp"

@@ -3,6 +3,8 @@ package fpt.edu.pay.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,16 +14,18 @@ import androidx.viewpager.widget.ViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
+import fpt.edu.pay.MainActivity;
 import fpt.edu.pay.R;
 import fpt.edu.pay.adepter.TransferBankAdapter;
 import fpt.edu.pay.adepter.TransferBankRecycleAdapter;
 import fpt.edu.pay.common.OnItemClickListener;
-import fpt.edu.pay.model.Money;
 import fpt.edu.pay.model.TransferMoney;
 
 public class TransferMoneyActivity extends AppCompatActivity {
     private int currentPage = 0;
     private final Handler handler = new Handler();
+
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,9 @@ public class TransferMoneyActivity extends AppCompatActivity {
         images.add(R.drawable.img_chuyen100d);
         images.add(R.drawable.img_quetma);
         images.add(R.drawable.img_chuyen100xu);
+        back = findViewById(R.id.id_back);
+
+
 
         TransferBankAdapter adapter = new TransferBankAdapter(images);
         ViewPager viewPager = findViewById(R.id.view_pager);
@@ -66,7 +73,19 @@ public class TransferMoneyActivity extends AppCompatActivity {
             }
 
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TransferMoneyActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
+
+
+
 
 
 }
