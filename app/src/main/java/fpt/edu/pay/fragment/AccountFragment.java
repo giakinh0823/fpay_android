@@ -60,7 +60,6 @@ public class AccountFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -93,4 +92,6 @@ public class AccountFragment extends Fragment {
                         AccountConstant.GROUP_MENU_ACCOUNTS.stream())
                 .collect(Collectors.toList()));
     }
+
+
 }

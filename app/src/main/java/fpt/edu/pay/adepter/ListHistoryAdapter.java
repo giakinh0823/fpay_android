@@ -1,5 +1,6 @@
 package fpt.edu.pay.adepter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -44,11 +46,15 @@ public class ListHistoryAdapter extends RecyclerView.Adapter<ListHistoryAdapter.
         if (history==null){
             return;
         }
-
+        holder.tv_name.setText(history.getTransactionType());
         holder.tv_date.setText(history.getTransactionTime());
         holder.description.setText(history.getDescription());
         holder.money.setText(Integer.toString(history.getAmount()));
-        holder.status.setText(Integer.toString(history.getStatus()));
+        holder.status.setText(history.getStatus()==1? "Thành công" : "Thất bại");
+        int colorRes = history.getStatus() == 1 ? R.color.green : R.color.red;
+        int color = ContextCompat.getColor(holder.itemView.getContext(), colorRes);
+        holder.status.setTextColor(color);
+
     }
 
     @Override
@@ -61,6 +67,7 @@ public class ListHistoryAdapter extends RecyclerView.Adapter<ListHistoryAdapter.
 
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
+        private TextView tv_name;
         private TextView tv_date;
         private TextView description;
         private TextView money;
@@ -68,6 +75,7 @@ public class ListHistoryAdapter extends RecyclerView.Adapter<ListHistoryAdapter.
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
+            tv_name=itemView.findViewById(R.id.tv_namee);
             tv_date = itemView.findViewById(R.id.tv_date);
             description = itemView.findViewById(R.id.description);
             money = itemView.findViewById(R.id.money);

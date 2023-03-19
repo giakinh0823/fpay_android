@@ -23,8 +23,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_9
-        targetCompatibility JavaVersion.VERSION_1_9
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     viewBinding {
@@ -51,5 +51,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'com.mikhaellopez:circularimageview:4.3.1'
+<<<<<<< HEAD
 
+=======
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+>>>>>>> 48c8ba956d28cc34ba1ec3b55d1beef69a2c7084
 }
