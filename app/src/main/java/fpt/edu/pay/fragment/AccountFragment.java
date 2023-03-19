@@ -87,7 +87,7 @@ public class AccountFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycle_view_menu_account);
         groupMenuAccountAdapter = new GroupMenuAccountAdapter(Stream.concat(Stream.of(
                         new GroupMenuAccount(List.of(
-                                new MenuAccount("Hà Gia Kính", "0972141556", R.raw.avatar)
+                                new MenuAccount(AccountConstant.Type.PROFILE, "Hà Gia Kính", "0972141556", R.raw.avatar)
                         ))),
                         AccountConstant.GROUP_MENU_ACCOUNTS.stream())
                 .collect(Collectors.toList()), this.getContext());

@@ -1,6 +1,7 @@
 package fpt.edu.pay.adepter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import fpt.edu.pay.R;
+import fpt.edu.pay.activity.UserProfileActivity;
+import fpt.edu.pay.constant.AccountConstant;
 import fpt.edu.pay.model.account.GroupMenuAccount;
 import lombok.Getter;
 import lombok.Setter;
@@ -63,6 +66,12 @@ public class GroupMenuAccountAdapter extends RecyclerView.Adapter<RecyclerView.V
             commonAccountHeadHolder.imageView.setImageResource(groupMenuAccount.getMenuAccounts().get(0).getImage());
             commonAccountHeadHolder.fullName.setText(groupMenuAccount.getMenuAccounts().get(0).getTitle());
             commonAccountHeadHolder.phoneNumber.setText(groupMenuAccount.getMenuAccounts().get(0).getDesc());
+
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, UserProfileActivity.class);
+                intent.putExtra("selected_item", groupMenuAccount.getMenuAccounts().get(0).getTitle());
+                context.startActivity(intent);
+            });
         } else {
             GroupMenuAccountViewHolder groupMenuAccountViewHolder = (GroupMenuAccountViewHolder) holder;
             MenuAccountAdapter menuAccountAdapter = new MenuAccountAdapter(groupMenuAccount.getMenuAccounts(), context);

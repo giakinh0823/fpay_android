@@ -16,6 +16,8 @@ import java.util.List;
 import fpt.edu.pay.R;
 import fpt.edu.pay.activity.AccountSettingActivity;
 import fpt.edu.pay.activity.BankingActivity;
+import fpt.edu.pay.activity.UserProfileActivity;
+import fpt.edu.pay.constant.AccountConstant;
 import fpt.edu.pay.model.account.MenuAccount;
 import lombok.Getter;
 import lombok.Setter;
@@ -48,7 +50,7 @@ public class MenuAccountAdapter extends RecyclerView.Adapter<MenuAccountAdapter.
         holder.desc.setText(menuAccount.getDesc());
         holder.image.setImageResource(menuAccount.getImage());
 
-        if(menuAccount.getTitle().equalsIgnoreCase("ngân hàng")){
+        if (menuAccount.getTitle().equalsIgnoreCase("ngân hàng")) {
             holder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, BankingActivity.class);
                 intent.putExtra("selected_item", menuAccount.getTitle());
@@ -56,14 +58,13 @@ public class MenuAccountAdapter extends RecyclerView.Adapter<MenuAccountAdapter.
             });
         }
 
-        if(menuAccount.getTitle().equalsIgnoreCase("thiết lập tài khoản")){
+        if (menuAccount.getTitle().equalsIgnoreCase("thiết lập tài khoản")) {
             holder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, AccountSettingActivity.class);
                 intent.putExtra("selected_item", menuAccount.getTitle());
                 context.startActivity(intent);
             });
         }
-
 
 
     }

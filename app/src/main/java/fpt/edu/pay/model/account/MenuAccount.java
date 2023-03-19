@@ -9,12 +9,14 @@ public class MenuAccount {
     private String title;
     private String desc;
     private int image;
+    private String type;
 
 
     public MenuAccount() {
     }
 
-    public MenuAccount(String title, String desc, int image) {
+    public MenuAccount(String type, String title, String desc, int image) {
+        this.type = type;
         this.title = title;
         this.desc = desc;
         this.image = image;
@@ -42,5 +44,13 @@ public class MenuAccount {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
