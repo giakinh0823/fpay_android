@@ -1,17 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondary"
+    android:background="@color/white"
     tools:context=".fragment.QrFragment">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginEnd="1dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0f70dd"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Quét mã QR"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+        </LinearLayout>
 
-    <!-- TODO: Update blank fragment layout -->
+    </androidx.drawerlayout.widget.DrawerLayout>
+
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/image_camera"
+        android:layout_width="219dp"
+        android:layout_height="289dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_qr"
-        android:contentDescription="@string/menu_qr" />
+        app:tint="@color/black"
+        android:src="@drawable/ic_qr"/>
+
+    <Button
+        android:id="@+id/button_camera"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
+        android:text="Quét mã" />
+
 
 </FrameLayout>
+
