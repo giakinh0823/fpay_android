@@ -3,6 +3,7 @@ package fpt.edu.pay.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,7 +17,6 @@ import fpt.edu.pay.R;
 import fpt.edu.pay.adepter.TransferBankAdapter;
 import fpt.edu.pay.adepter.TransferBankRecycleAdapter;
 import fpt.edu.pay.common.OnItemClickListener;
-import fpt.edu.pay.model.Money;
 import fpt.edu.pay.model.TransferMoney;
 
 public class TransferMoneyActivity extends AppCompatActivity {
@@ -66,6 +66,15 @@ public class TransferMoneyActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    public void backToHome(View view) {
+        onBackPressed();
     }
 
 
