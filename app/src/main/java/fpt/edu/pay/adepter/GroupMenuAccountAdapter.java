@@ -68,6 +68,7 @@ public class GroupMenuAccountAdapter extends RecyclerView.Adapter<RecyclerView.V
             MenuAccountAdapter menuAccountAdapter = new MenuAccountAdapter(groupMenuAccount.getMenuAccounts(), context);
             groupMenuAccountViewHolder.recyclerView.setAdapter(menuAccountAdapter);
         }
+
     }
 
     @Override

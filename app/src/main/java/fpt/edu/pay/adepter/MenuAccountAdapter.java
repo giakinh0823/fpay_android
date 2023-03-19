@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import fpt.edu.pay.R;
+import fpt.edu.pay.activity.AccountSettingActivity;
 import fpt.edu.pay.activity.BankingActivity;
 import fpt.edu.pay.model.account.MenuAccount;
 import lombok.Getter;
@@ -54,6 +55,17 @@ public class MenuAccountAdapter extends RecyclerView.Adapter<MenuAccountAdapter.
                 context.startActivity(intent);
             });
         }
+
+        if(menuAccount.getTitle().equalsIgnoreCase("thiết lập tài khoản")){
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, AccountSettingActivity.class);
+                intent.putExtra("selected_item", menuAccount.getTitle());
+                context.startActivity(intent);
+            });
+        }
+
+
+
     }
 
     @Override

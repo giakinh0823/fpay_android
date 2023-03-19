@@ -1,14 +1,18 @@
 package fpt.edu.pay.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import fpt.edu.pay.MainActivity;
 import fpt.edu.pay.R;
 import fpt.edu.pay.adepter.SettingAdapter;
 import fpt.edu.pay.model.Setting;
@@ -33,5 +37,14 @@ public class AccountSettingActivity extends AppCompatActivity {
         SettingAdapter adapter = new SettingAdapter(list);
         rec.setLayoutManager(new LinearLayoutManager(this));
         rec.setAdapter(adapter);
+
+        ImageView back = findViewById(R.id.back_id);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AccountSettingActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
