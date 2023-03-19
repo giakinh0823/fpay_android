@@ -1,5 +1,6 @@
 package fpt.edu.pay.adepter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,14 @@ import lombok.Setter;
 public class GroupMenuAccountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<GroupMenuAccount> groupMenuAccounts;
+    private Context context;
 
     private static final int VIEW_TYPE_ACCOUNT_HEADER = 0;
     private static final int VIEW_TYPE_GROUP_ITEM = 1;
 
-    public GroupMenuAccountAdapter(List<GroupMenuAccount> groupMenuAccounts) {
+    public GroupMenuAccountAdapter(List<GroupMenuAccount> groupMenuAccounts, Context context) {
         this.groupMenuAccounts = groupMenuAccounts;
+        this.context = context;
     }
 
     @Override
@@ -62,7 +65,7 @@ public class GroupMenuAccountAdapter extends RecyclerView.Adapter<RecyclerView.V
             commonAccountHeadHolder.phoneNumber.setText(groupMenuAccount.getMenuAccounts().get(0).getDesc());
         } else {
             GroupMenuAccountViewHolder groupMenuAccountViewHolder = (GroupMenuAccountViewHolder) holder;
-            MenuAccountAdapter menuAccountAdapter = new MenuAccountAdapter(groupMenuAccount.getMenuAccounts());
+            MenuAccountAdapter menuAccountAdapter = new MenuAccountAdapter(groupMenuAccount.getMenuAccounts(), context);
             groupMenuAccountViewHolder.recyclerView.setAdapter(menuAccountAdapter);
         }
     }
