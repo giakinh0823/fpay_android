@@ -1,5 +1,7 @@
 package fpt.edu.pay.adepter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import fpt.edu.pay.R;
+import fpt.edu.pay.activity.AccountSettingActivity;
+import fpt.edu.pay.activity.BankingActivity;
+import fpt.edu.pay.activity.UserProfileActivity;
+import fpt.edu.pay.constant.AccountConstant;
 import fpt.edu.pay.model.account.MenuAccount;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,9 +26,11 @@ import lombok.Setter;
 @Setter
 public class MenuAccountAdapter extends RecyclerView.Adapter<MenuAccountAdapter.MenuAccountViewHolder> {
     private List<MenuAccount> menus;
+    private Context context;
 
-    public MenuAccountAdapter(List<MenuAccount> menus) {
+    public MenuAccountAdapter(List<MenuAccount> menus, Context context) {
         this.menus = menus;
+        this.context = context;
     }
 
     @NonNull
@@ -41,6 +49,24 @@ public class MenuAccountAdapter extends RecyclerView.Adapter<MenuAccountAdapter.
         holder.title.setText(menuAccount.getTitle());
         holder.desc.setText(menuAccount.getDesc());
         holder.image.setImageResource(menuAccount.getImage());
+
+        if (menuAccount.getTitle().equalsIgnoreCase("ngân hàng")) {
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, BankingActivity.class);
+                intent.putExtra("selected_item", menuAccount.getTitle());
+                context.startActivity(intent);
+            });
+        }
+
+        if (menuAccount.getTitle().equalsIgnoreCase("thiết lập tài khoản")) {
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, AccountSettingActivity.class);
+                intent.putExtra("selected_item", menuAccount.getTitle());
+                context.startActivity(intent);
+            });
+        }
+
+
     }
 
     @Override
