@@ -90,7 +90,7 @@ public class AccountFragment extends Fragment {
                                 new MenuAccount("Hà Gia Kính", "0972141556", R.raw.avatar)
                         ))),
                         AccountConstant.GROUP_MENU_ACCOUNTS.stream())
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList()), this.getContext());
     }
 
 
