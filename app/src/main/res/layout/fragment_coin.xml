@@ -29,11 +29,12 @@
         </LinearLayout>
 
     </androidx.drawerlayout.widget.DrawerLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_coin"
-        android:layout_width="370dp"
-        android:layout_height="805dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="100dp" />
+        android:layout_marginBottom="0dp" />
 </FrameLayout>
